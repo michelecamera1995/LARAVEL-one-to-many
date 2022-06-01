@@ -54,7 +54,7 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->slug = PostsModel::convertToSlug($newPost->title);
         $newPost->save();
-        return view('admin.posts.index');
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -63,11 +63,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(PostsModel $post)
+    public function show()
     {
         //
-        if ($post) {
-            return view('admin.posts.show', compact('post'));
+        $posts = PostsModel::all();
+        if ($posts) {
+            return view('admin.posts.show', compact('posts'));
         } else {
             abort(404);
         }
