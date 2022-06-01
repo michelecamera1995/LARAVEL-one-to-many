@@ -84,8 +84,9 @@ class PostController extends Controller
     public function edit(PostsModel $post)
     {
         //
+        $categories = CategoryModel::all();
         if ($post) {
-            return view('admin.posts.edit', compact('post'));
+            return view('admin.posts.edit', compact('post', 'categories'));
         } else {
             abort(404);
         }
