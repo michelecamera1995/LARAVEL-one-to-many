@@ -15,10 +15,10 @@ class AddForeignPostsTable extends Migration
     {
         //
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id');
-            $table->reference('id');
-            $table->on('user');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories');
         });
     }
 
@@ -30,5 +30,9 @@ class AddForeignPostsTable extends Migration
     public function down()
     {
         //
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropForeign('post_category_id_foreign');
+            $table->dropColumn('category_id');
+        });
     }
 }
