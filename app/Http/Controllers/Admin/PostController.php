@@ -63,12 +63,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(PostsModel $post)
     {
         //
         $posts = PostsModel::all();
+        $categories = CategoryModel::find($post->category_id);
         if ($posts) {
-            return view('admin.posts.show', compact('posts'));
+            return view('admin.posts.show', compact('posts', 'categories'));
         } else {
             abort(404);
         }
