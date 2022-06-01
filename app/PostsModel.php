@@ -9,7 +9,7 @@ class PostsModel extends Model
 {
     //
     protected $table = "posts";
-    protected $fillable = ['title', 'content', 'slug'];
+    protected $fillable = ['title', 'content', 'category', 'slug'];
 
     public static function convertToSlug($title)
     {
