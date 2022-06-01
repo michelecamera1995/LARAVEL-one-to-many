@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\PostsModel;
-
+use App\CategoryModel;
 
 
 
@@ -19,8 +19,9 @@ class PostController extends Controller
     public function index()
     {
         //
+        $categories = CategoryModel::all();
         $posts = PostsModel::all();
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     /**
@@ -31,7 +32,8 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('admin.posts.create');
+        $categories = CategoryModel::all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**

@@ -11,7 +11,7 @@ class PostsModel extends Model
     protected $table = "posts";
     protected $fillable = ['title', 'content', 'category_id', 'slug'];
 
-    public function category()
+    public function selectCategory()
     {
         return $this->belongsTo('App/CategoryModel');
     }

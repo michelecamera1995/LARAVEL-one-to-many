@@ -1,9 +1,11 @@
 <a class="nav-link" href="{{ route('admin.posts.create') }}">crea</a>
-
 @foreach($posts as $post)
-<h1>{{ $post->title}}</h1>
+<h2>Titolo:</h2>
+<h2>{{ $post->title}}</h2>
+<h2>Contenuto:</h2>
 <p>{{ $post->content}}</p>
-<a class="nav-link" href="{{ route('admin.posts.edit', $post) }}">modifica</a>
+<button><a class="nav-link" href="{{ route('admin.posts.edit', $post) }}">modifica</a></button>
+
 <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
     @csrf
     @method('DELETE')

@@ -8,5 +8,13 @@
         <label for="content">Description</label>
         <input type="text" name="content">
     </div>
+    <div>
+        <select name="category_id" id="">
+            <option value="">select category</option>
+            @foreach($categories as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+    </div>
     <button type="submit">submit</button>
 </form>
